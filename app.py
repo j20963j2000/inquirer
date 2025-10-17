@@ -11,6 +11,7 @@ from linebot.models import MessageEvent, TextMessage, TextSendMessage
 
 from user_input_parsing import parse_user_text
 from make_quote_linux import make_quote
+from remove_watermark import remove_watermark
 
 # ---- 環境變數 ----
 load_dotenv()
@@ -97,6 +98,8 @@ def on_text(event: MessageEvent):
     # 轉為可下載 URL
     xlsx_url = f"{PUBLIC_BASE_URL}/files/{Path(xlsx_out).name}"
     pdf_url  = f"{PUBLIC_BASE_URL}/files/{Path(pdf_out).name}"
+
+    remove_watermark(pdf_url, pdf_url, "Confidential")
 
     msg = (
         "✅ 報價單已完成！\n"
