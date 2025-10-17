@@ -3,3 +3,4 @@ fastapi>=0.115
 uvicorn[standard]>=0.30
 line-bot-sdk>=2.5
 python-dotenv>=1.0
+PyMuPDF
