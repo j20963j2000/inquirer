@@ -99,12 +99,13 @@ def on_text(event: MessageEvent):
     xlsx_url = f"{PUBLIC_BASE_URL}/files/{Path(xlsx_out).name}"
     pdf_url  = f"{PUBLIC_BASE_URL}/files/{Path(pdf_out).name}"
 
-    remove_watermark(pdf_url, pdf_url, "Confidential")
+    output_to_user_pdf = remove_watermark(Path(pdf_out))
+    pdf_url_to_user  = f"{PUBLIC_BASE_URL}/files/{Path(output_to_user_pdf).name}"
 
     msg = (
         "✅ 報價單已完成！\n"
         f"Excel：{xlsx_url}\n"
-        f"PDF：{pdf_url}\n"
+        f"PDF：{pdf_url_to_user}\n"
         "(連結有效取決於你伺服器是否持續運作)"
     )
     line_bot_api.reply_message(event.reply_token, TextSendMessage(text=msg))

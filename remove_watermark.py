@@ -1,6 +1,6 @@
 import fitz  # PyMuPDF
 
-def remove_watermark(input_pdf, output_pdf, watermark_text):
+def remove_watermark(input_pdf, output_to_user_pdf="output.pdf", watermark_text="Confidential"):
     # 打开 PDF 文件
     doc = fitz.open(input_pdf)
     
@@ -15,8 +15,9 @@ def remove_watermark(input_pdf, output_pdf, watermark_text):
             page.apply_redactions()
     
     # 保存修改后的 PDF
-    doc.save(output_pdf)
-    print(f"水印已成功移除，保存为 {output_pdf}")
+    doc.save(output_to_user_pdf)
+    print(f"水印已成功移除，保存为 {output_to_user_pdf}")
+    return output_to_user_pdf
 
 if __name__ == "__main__":
     input_pdf = r"C:\Users\j2096\OneDrive\Desktop\QuotationBot\linebot\報價單_凱凱_20251017-145756.pdf"
