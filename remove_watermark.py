@@ -1,9 +1,10 @@
 import fitz  # PyMuPDF
 
-def remove_watermark(input_pdf, output_to_user_pdf, watermark_text="Evaluation"):
+def remove_watermark(input_pdf, output_to_user_pdf):
     # 打开 PDF 文件
     doc = fitz.open(input_pdf)
     
+    watermark_text = "Evaluation Only. Created with Aspose.Cells for Python via .NET. Copyright 2003 - 2025 Aspose Pty Ltd."
     # 遍历每一页
     for page_num in range(len(doc)):
         page = doc.load_page(page_num)
