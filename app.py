@@ -99,7 +99,10 @@ def on_text(event: MessageEvent):
     xlsx_url = f"{PUBLIC_BASE_URL}/files/{Path(xlsx_out).name}"
     pdf_url  = f"{PUBLIC_BASE_URL}/files/{Path(pdf_out).name}"
 
-    output_to_user_pdf = remove_watermark(Path(pdf_out))
+    p = Path(pdf_out)  # 例如 /app/public/凱凱超級公司_....pdf
+    output_to_user_pdf = str(p.with_name(p.stem + "_clean.pdf"))
+
+    output_to_user_pdf = remove_watermark(input_pdf = str(p), output_to_user_pdf = output_to_user_pdf)
     pdf_url_to_user  = f"{PUBLIC_BASE_URL}/files/{Path(output_to_user_pdf).name}"
 
     msg = (
