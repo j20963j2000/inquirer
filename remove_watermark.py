@@ -1,6 +1,6 @@
 import fitz  # PyMuPDF
 
-def remove_watermark(input_pdf, output_to_user_pdf, watermark_text="Confidential"):
+def remove_watermark(input_pdf, output_to_user_pdf, watermark_text="Evaluation"):
     # 打开 PDF 文件
     doc = fitz.open(input_pdf)
     
